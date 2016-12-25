@@ -20,7 +20,9 @@ public class SearchTest {
 
     @Before
     public void setUp() throws Exception {
-        steps = new WebDriverSteps(new RemoteWebDriver(new URL("http://localhost:32768/wd/hub"), DesiredCapabilities.chrome()));
+        URL url = new URL("http://192.168.0.103:32768/wd/hub");
+        System.out.println(url.toString());
+        steps = new WebDriverSteps(new RemoteWebDriver(url, DesiredCapabilities.chrome()));
     }
 
     @Test
