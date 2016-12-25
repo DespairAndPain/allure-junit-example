@@ -5,6 +5,10 @@ import my.company.steps.WebDriverSteps;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.URL;
 
 /**
  * @author Dmitry Baev charlie@yandex-team.ru
@@ -16,8 +20,7 @@ public class SearchTest {
 
     @Before
     public void setUp() throws Exception {
-        ChromeDriverManager.getInstance().setup();
-        steps = new WebDriverSteps(new ChromeDriver());
+        steps = new WebDriverSteps(new RemoteWebDriver(new URL("http://localhost:32768/wd/hub"), DesiredCapabilities.chrome()));
     }
 
     @Test
