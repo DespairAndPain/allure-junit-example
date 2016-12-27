@@ -19,17 +19,14 @@ import ru.yandex.qatools.allure.annotations.Step;
  * @author Dmitry Baev charlie@yandex-team.ru
  *         Date: 28.10.13
  */
-public class WebDriverSteps {
+public class YandexSteps {
 
-    private WebDriver driver;
+    private final WebDriver driver;
+    private final CommonSteps commonSteps;
 
-    public WebDriverSteps(WebDriver driver) {
+    public YandexSteps(WebDriver driver) {
         this.driver = driver;
-    }
-
-    @Step
-    public void openMainPage() {
-        driver.get("http://ya.ru");
+        this.commonSteps = new CommonSteps(driver);
     }
 
     @Step
@@ -39,12 +36,6 @@ public class WebDriverSteps {
         new WebDriverWait(driver, 10)
                 .withMessage("Could not load results page")
                 .until(mainContainLoaded());
-    }
-
-    @Attachment
-    @Step("Make screen shot of results page")
-    public byte[] makeScreenShot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
     public void quit() {
