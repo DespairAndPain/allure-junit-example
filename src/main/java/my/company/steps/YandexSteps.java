@@ -1,6 +1,7 @@
 package my.company.steps;
 
 import com.google.common.base.Predicate;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -8,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.qatools.allure.annotations.Attachment;
 import ru.yandex.qatools.allure.annotations.Step;
+
+import java.util.logging.Logger;
 
 /**
  * The content of the following class is for demonstration purposes only.
@@ -21,6 +24,8 @@ import ru.yandex.qatools.allure.annotations.Step;
  */
 public class YandexSteps {
 
+    private Logger logger  = Logger.getLogger(LogFactory.class.getName());
+
     private final WebDriver driver;
     private final CommonSteps commonSteps;
 
@@ -31,8 +36,10 @@ public class YandexSteps {
 
     @Step
     public void search(String text) {
+        logger.info("Enter text" + text);
         driver.findElement(By.id("text")).sendKeys(text);
         driver.findElement(By.className("suggest2-form__button")).submit();
+        logger.info("Wait for element");
         new WebDriverWait(driver, 10)
                 .withMessage("Could not load results page")
                 .until(mainContainLoaded());

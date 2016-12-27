@@ -19,6 +19,6 @@ public class WebDriverConstructor {
             throw new Error(e);
         }
         System.out.println(url.toString());
-        return new RemoteWebDriver(url, DesiredCapabilities.chrome());
+        return new RemoteWebDriver(url, DesiredCapabilities.firefox());
     }
 }
