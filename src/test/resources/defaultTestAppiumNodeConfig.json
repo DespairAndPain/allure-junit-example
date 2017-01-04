@@ -1,0 +1,23 @@
+{
+     "capabilities": [
+         {
+             "version": "6.0.1",
+             "maxInstances": 1,
+             "platform": "ANDROID",
+             "deviceName": "nexus5"
+         }
+     ],
+     "configuration": {
+         "cleanUpCycle": 2000,
+         "timeout": 300,
+         "hub": "http://localhost:4444/grid/register",
+         "host": "localhost",
+    	 "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+         "maxSession": 1,
+         "hubPort": 4444,
+         "hubHost": "localhost",
+         "register": true,
+         "registerCycle": 5000,
+         "role": "node"
+     }
+ }
