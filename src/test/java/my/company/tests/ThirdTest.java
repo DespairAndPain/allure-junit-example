@@ -2,7 +2,7 @@ package my.company.tests;
 
 import my.company.steps.CommonSteps;
 import my.company.steps.DuckDuckGoSteps;
-import my.company.steps.GoogleSteps;
+import my.company.steps.TestCases.WebDriverConstructor;
 import org.junit.Test;
 
 /**

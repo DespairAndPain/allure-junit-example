@@ -1,4 +1,4 @@
-package my.company.tests;
+package my.company.steps.TestCases;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -14,7 +14,7 @@ public class WebDriverConstructor {
     protected WebDriver initWebDriver() {
         URL url;
         try {
-            url = new URL("http://192.168.0.103:32769/wd/hub");
+            url = new URL("http://localhost:4444/wd/hub");
         } catch (MalformedURLException e) {
             throw new Error(e);
         }
