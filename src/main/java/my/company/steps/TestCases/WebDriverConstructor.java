@@ -14,11 +14,11 @@ public class WebDriverConstructor {
     protected WebDriver initWebDriver() {
         URL url;
         try {
-            url = new URL("http://localhost:4444/wd/hub");
+            url = new URL("http://" + System.getProperty("selenium.url") + ":4444/wd/hub");
         } catch (MalformedURLException e) {
             throw new Error(e);
         }
         System.out.println(url.toString());
-        return new RemoteWebDriver(url, DesiredCapabilities.firefox());
+        return new RemoteWebDriver(url, DesiredCapabilities.chrome());
     }
 }

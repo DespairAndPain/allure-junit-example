@@ -20,9 +20,10 @@
     </scm>
 
     <properties>
-        <allure.version>1.4.23.HOTFIX1</allure.version>
+        <allure.version>1.5.1</allure.version>
         <aspectj.version>1.8.9</aspectj.version>
         <compiler.version>1.7</compiler.version>
+        <selenium.url>172.17.0.3</selenium.url>
     </properties>
 
     <name>Allure JUnit Example</name>
@@ -69,6 +70,9 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
+                    <systemPropertyVariables>
+                        <selenium.url>${selenium.url}</selenium.url>
+                    </systemPropertyVariables>
                     <properties>
                         <property>
                             <name>listener</name>

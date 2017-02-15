@@ -3,6 +3,7 @@ package my.company.tests;
 import my.company.steps.AndroidSteps;
 import my.company.steps.TestCases.AndroidTestCase;
 import my.company.steps.TestCases.WebDriverConstructor;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -13,6 +14,7 @@ public class AndroidTest extends AndroidTestCase {
     private AndroidSteps androidSteps = new AndroidSteps(driver);
 
     @Test
+    @Ignore
     public void firstTest() {
 
         androidSteps.openVK();
