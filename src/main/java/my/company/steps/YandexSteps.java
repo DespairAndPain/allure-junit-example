@@ -1,48 +1,30 @@
 package my.company.steps;
 
 import com.google.common.base.Predicate;
-import org.apache.commons.logging.LogFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.yandex.qatools.allure.annotations.Attachment;
 import ru.yandex.qatools.allure.annotations.Step;
 
-import java.util.logging.Logger;
-
-/**
- * The content of the following class is for demonstration purposes only.
- * In your project you should organize your code in the different way, an
- * example move all the selectors to separate place. Usually better to use
- * some other library to organize access to your service pages such as
- * Yandex HTMLElements.
- *
- * @author Dmitry Baev charlie@yandex-team.ru
- *         Date: 28.10.13
- */
+@Slf4j
 public class YandexSteps {
 
-    private Logger logger  = Logger.getLogger(LogFactory.class.getName());
-
     private final WebDriver driver;
-    private final CommonSteps commonSteps;
 
     public YandexSteps(WebDriver driver) {
         this.driver = driver;
-        this.commonSteps = new CommonSteps(driver);
     }
 
     @Step
     public void search(String text) {
-        logger.info("Enter text" + text);
+        log.info("Enter text" + text);
         driver.findElement(By.id("text")).sendKeys(text);
         driver.findElement(By.className("suggest2-form__button")).submit();
-        logger.info("Wait for element");
+        log.info("Wait for element");
         new WebDriverWait(driver, 10)
-                .withMessage("Could not load results page")
-                .until(mainContainLoaded());
+            .withMessage("Could not load results page")
+            .until(mainContainLoaded());
     }
 
     public void quit() {

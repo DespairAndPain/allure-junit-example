@@ -1,6 +1,7 @@
 package my.company.steps;
 
 import com.google.common.base.Predicate;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -12,9 +13,9 @@ import java.util.logging.Logger;
 /**
  * Created by stepan on 27.12.16.
  */
+@Slf4j
 public class DuckDuckGoSteps {
 
-    private Logger logger  = Logger.getLogger(LogFactory.class.getName());
     private final WebDriver driver;
     private final CommonSteps commonSteps;
 
@@ -25,9 +26,9 @@ public class DuckDuckGoSteps {
 
 
     public void enter(String text) {
-        logger.info("Enter text" + text);
+        log.info("Enter text" + text);
         driver.findElement(By.id("search_form_input_homepage")).sendKeys(text + Keys.ENTER);
-        logger.info("Wait for element");
+        log.info("Wait for element");
         new WebDriverWait(driver, 10)
                 .withMessage("Could not load results page")
                 .until(mainContainLoaded());

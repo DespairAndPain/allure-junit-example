@@ -19,7 +19,7 @@ public class AndroidTestCase {
     protected RemoteWebDriver initWebDriver() {
         URL url;
         try {
-            url = new URL("http://localhost:4444/wd/hub");
+            url = new URL("http://" + System.getProperty("selenium.url") + ":4444/wd/hub");
         } catch (MalformedURLException e) {
             throw new Error(e);
         }
@@ -28,7 +28,7 @@ public class AndroidTestCase {
         desiredCapabilities.setCapability("platform", "ANDROID");
         desiredCapabilities.setCapability("deviceName", "nexus5");
         desiredCapabilities.setCapability("clearSystemFiles", "true");
-        desiredCapabilities.setCapability("app", "/home/stepan/workspace/weather.gismeteo-1.1.7-ultra.apk");
+        desiredCapabilities.setCapability("app", "C:\\Gismeteo+v1.1.9.apk");
         System.out.println(url.toString());
         return new AndroidDriver(url, desiredCapabilities);
     }
