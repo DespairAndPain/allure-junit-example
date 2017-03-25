@@ -11,14 +11,14 @@ import java.net.URL;
 
 public class WebDriverConstructor {
 
-    protected final WebDriver driver = initWebDriver(WebDriverTypes.REMOTE_CHROME);
+    protected final WebDriver driver = initWebDriver();
 
-    protected WebDriver initWebDriver(WebDriverTypes driverType) {
+    protected WebDriver initWebDriver() {
 
-        switch (driverType) {
-            case REMOTE_CHROME:
+        switch (System.getProperty("browser.type", "CHROME")) {
+            case "REMOTE_CHROME":
                 return getRemoteDriver();
-            case CHROME:
+            case "CHROME":
                 return new ChromeDriver(DesiredCapabilities.chrome());
             default:
                 throw new Error("Cant find driver");
