@@ -3,12 +3,13 @@ package my.company.tests;
 import my.company.steps.CommonSteps;
 import my.company.steps.GoogleSteps;
 import my.company.steps.TestCases.WebDriverConstructor;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-public class SecondTest  extends WebDriverConstructor {
+public class SecondTest extends WebDriverConstructor {
 
 
     private GoogleSteps steps = new GoogleSteps(driver);
+
     private CommonSteps commonSteps = new CommonSteps(driver);
 
     @Test

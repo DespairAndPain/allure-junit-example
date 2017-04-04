@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class WebDriverConstructor {
 
-    protected final WebDriver driver = initWebDriver(WebDriverTypes.REMOTE_CHROME);
+    protected final WebDriver driver = initWebDriver(WebDriverTypes.CHROME);
 
     protected WebDriver initWebDriver(WebDriverTypes driverType) {
 

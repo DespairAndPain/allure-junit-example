@@ -3,8 +3,7 @@ package my.company.tests;
 import my.company.steps.CommonSteps;
 import my.company.steps.DuckDuckGoSteps;
 import my.company.steps.TestCases.WebDriverConstructor;
-import org.junit.Test;
-
+import org.testng.annotations.Test;
 /**
  * Created by stepan on 27.12.16.
  */
