@@ -13,12 +13,12 @@ public class WebDriverConstructor {
 
     protected final WebDriver driver = initWebDriver(WebDriverTypes.CHROME);
 
-    protected WebDriver initWebDriver(WebDriverTypes driverType) {
+    protected WebDriver initWebDriver(WebDriverTypes webDriverType) {
 
-        switch (driverType) {
-            case REMOTE_CHROME:
+        switch (System.getProperty("browser.type", webDriverType.name())) {
+            case "REMOTE_CHROME":
                 return getRemoteDriver();
-            case CHROME:
+            case "CHROME":
                 return new ChromeDriver(DesiredCapabilities.chrome());
             default:
                 throw new Error("Cant find driver");

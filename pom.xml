@@ -20,6 +20,7 @@
     </scm>
 
     <properties>
+        <browser.type>CHROME</browser.type>
         <allure.version>1.5.1</allure.version>
         <aspectj.version>1.8.9</aspectj.version>
         <compiler.version>1.7</compiler.version>
@@ -108,6 +109,7 @@
                     </argLine>
                     <systemPropertyVariables>
                         <selenium.url>${selenium.url}</selenium.url>
+                        <browser.type>${browser.type}</browser.type>
                     </systemPropertyVariables>
                     <threadCountMethods>3</threadCountMethods>
                     <perCoreThreadCount>false</perCoreThreadCount>
