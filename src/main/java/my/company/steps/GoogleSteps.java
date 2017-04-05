@@ -11,12 +11,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.logging.Logger;
 
 @Slf4j
-public class GoogleSteps {
+public class GoogleSteps  extends CommonSteps{
 
     private final WebDriver driver;
     private final CommonSteps commonSteps;
 
     public GoogleSteps(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         this.commonSteps = new CommonSteps(driver);
     }

@@ -20,13 +20,13 @@
     </scm>
 
     <properties>
-        <browser.type>CHROME</browser.type>
         <allure.version>1.5.1</allure.version>
         <aspectj.version>1.8.9</aspectj.version>
         <compiler.version>1.7</compiler.version>
         <selenium.url>192.168.99.100</selenium.url>
         <slf4j.version>1.7.24</slf4j.version>
         <logback.version>1.2.1</logback.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
     <name>Allure JUnit Example</name>
@@ -34,30 +34,24 @@
 
     <dependencies>
         <dependency>
-            <groupId>ru.yandex.qatools.allure</groupId>
-            <artifactId>allure-testng-adaptor</artifactId>
-            <version>${allure.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
             <version>${logback.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.11</version>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.yandex.qatools.allure</groupId>
+            <artifactId>allure-junit-adaptor</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -83,12 +77,6 @@
     </dependencies>
 
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
         <testResources>
             <testResource>
                 <directory>src/test/resources</directory>
@@ -101,21 +89,26 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.19.1</version>
                 <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <systemPropertyVariables>
                         <selenium.url>${selenium.url}</selenium.url>
-                        <browser.type>${browser.type}</browser.type>
                     </systemPropertyVariables>
                     <threadCountMethods>3</threadCountMethods>
                     <perCoreThreadCount>false</perCoreThreadCount>
                     <useUnlimitedThreads>true</useUnlimitedThreads>
                     <reuseForks>true</reuseForks>
-                    <parallel>methods</parallel>
+                    <parallel>all</parallel>
+                    <includes>
+                        <include>**/Suite.java</include>
+                    </includes>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>ru.yandex.qatools.allure.junit.AllureRunListener</value>
+                        </property>
+                    </properties>
                 </configuration>
                 <dependencies>
                     <dependency>

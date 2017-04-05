@@ -14,12 +14,13 @@ import java.util.logging.Logger;
  * Created by stepan on 27.12.16.
  */
 @Slf4j
-public class DuckDuckGoSteps {
+public class DuckDuckGoSteps extends CommonSteps {
 
     private final WebDriver driver;
     private final CommonSteps commonSteps;
 
     public DuckDuckGoSteps(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         this.commonSteps = new CommonSteps(driver);
     }

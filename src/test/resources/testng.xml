@@ -3,9 +3,9 @@
 <suite name="Default Suite" parallel="methods">
   <test name="allure-junit-example">
     <classes>
-      <class name="my.company.tests.SearchTest"/>
-      <class name="my.company.tests.SecondTest"/>
-      <class name="my.company.tests.ThirdTest"/>
+      <class name="my.company.tests.SearchInYandexTest"/>
+      <class name="my.company.tests.SearchInGoogleTest"/>
+      <class name="my.company.tests.SearchInDuckDuckGoTest"/>
     </classes>
   </test> <!-- allure-junit-example -->
 </suite> <!-- Default Suite -->

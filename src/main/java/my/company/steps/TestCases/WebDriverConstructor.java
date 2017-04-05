@@ -1,5 +1,6 @@
 package my.company.steps.TestCases;
 
+import my.company.steps.CommonSteps;
 import my.company.steps.enums.WebDriverTypes;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,14 +12,14 @@ import java.net.URL;
 
 public class WebDriverConstructor {
 
-    protected final WebDriver driver = initWebDriver(WebDriverTypes.CHROME);
+    protected final WebDriver driver = initWebDriver(WebDriverTypes.REMOTE_CHROME);
 
-    protected WebDriver initWebDriver(WebDriverTypes webDriverType) {
+    protected WebDriver initWebDriver(WebDriverTypes driverType) {
 
-        switch (System.getProperty("browser.type", webDriverType.name())) {
-            case "REMOTE_CHROME":
+        switch (driverType) {
+            case REMOTE_CHROME:
                 return getRemoteDriver();
-            case "CHROME":
+            case CHROME:
                 return new ChromeDriver(DesiredCapabilities.chrome());
             default:
                 throw new Error("Cant find driver");

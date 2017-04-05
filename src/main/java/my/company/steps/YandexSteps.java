@@ -8,11 +8,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.qatools.allure.annotations.Step;
 
 @Slf4j
-public class YandexSteps {
+public class YandexSteps extends CommonSteps {
 
     private final WebDriver driver;
 
     public YandexSteps(WebDriver driver) {
+        super(driver);
         this.driver = driver;
     }
 
