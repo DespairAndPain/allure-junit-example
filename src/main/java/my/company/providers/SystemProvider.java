@@ -16,6 +16,6 @@ public class SystemProvider {
     }
 
     public static WebDriverTypes getDriverType() {
-        return LOCAL_DRIVER_TYPE;
+        return DRIVER_TYPE;
     }
 }
