@@ -8,7 +8,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({SearchInYandexTest.class,
-    SearchInGoogleTest.class,
-    SearchInDuckDuckGoTest.class})
+        SearchInGoogleTest.class,
+        SearchInDuckDuckGoTest.class})
 public class SearchTestsSuite {
 }

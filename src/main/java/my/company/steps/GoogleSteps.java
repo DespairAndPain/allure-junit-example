@@ -1,43 +1,37 @@
 package my.company.steps;
 
-import com.google.common.base.Predicate;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.logging.LogFactory;
-import org.openqa.selenium.By;
+import my.company.pages.GooglePage;
+import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.WebElement;
 
-import java.util.logging.Logger;
+import java.util.function.Function;
 
 @Slf4j
-public class GoogleSteps  extends CommonSteps{
+public class GoogleSteps extends CommonSteps {
 
-    private final WebDriver driver;
-    private final CommonSteps commonSteps;
+    private final GooglePage googlePage;
 
     public GoogleSteps(WebDriver driver) {
         super(driver);
-        this.driver = driver;
-        this.commonSteps = new CommonSteps(driver);
+        googlePage = new GooglePage(driver);
     }
 
+    public Function<WebElement, Boolean> waitT() {
+        return page::waitForElementPresent;
+    }
 
     public void enter(String text) {
         log.info("Enter text" + text);
-        driver.findElement(By.id("lst-ib")).sendKeys(text + Keys.ENTER);
+        googlePage.searchElement(text + Keys.ENTER);
         log.info("Wait for element");
-        new WebDriverWait(driver, 10)
-                .withMessage("Could not load results page")
-                .until(mainContainLoaded());
+        Assert.assertTrue(waitT().apply(googlePage.resultFields));
     }
 
-    private Predicate<WebDriver> mainContainLoaded() {
-        return new Predicate<WebDriver>() {
-            @Override
-            public boolean apply(WebDriver input) {
-                return driver.findElement(By.className("rc")).isDisplayed();
-            }
-        };
+    @Override
+    public void open() {
+        googlePage.open();
     }
 }

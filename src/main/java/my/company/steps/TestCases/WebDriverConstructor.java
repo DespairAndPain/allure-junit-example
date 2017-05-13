@@ -1,6 +1,6 @@
 package my.company.steps.TestCases;
 
-import my.company.steps.CommonSteps;
+import my.company.providers.SystemProvider;
 import my.company.steps.enums.WebDriverTypes;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,10 +12,17 @@ import java.net.URL;
 
 public class WebDriverConstructor {
 
-    protected final WebDriver driver = initWebDriver(WebDriverTypes.REMOTE_CHROME);
+    private WebDriverTypes driverType;
 
-    protected WebDriver initWebDriver(WebDriverTypes driverType) {
+    private WebDriverConstructor(WebDriverTypes type) {
+        driverType = type;
+    }
 
+    static WebDriver driverFactory(WebDriverTypes types) {
+        return new WebDriverConstructor(types).initWebDriver();
+    }
+
+    public WebDriver initWebDriver() {
         switch (driverType) {
             case REMOTE_CHROME:
                 return getRemoteDriver();
@@ -24,13 +31,12 @@ public class WebDriverConstructor {
             default:
                 throw new Error("Cant find driver");
         }
-
     }
 
     private WebDriver getRemoteDriver() {
         URL url;
         try {
-            url = new URL("http://" + System.getProperty("selenium.url") + ":4444/wd/hub");
+            url = new URL("http://" + SystemProvider.getHubURL() + ":4444/wd/hub");
         } catch (MalformedURLException e) {
             throw new Error(e);
         }
