@@ -1,5 +1,6 @@
 package my.company.steps;
 
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import my.company.pages.GooglePage;
 import org.junit.Assert;
@@ -23,6 +24,7 @@ public class GoogleSteps extends CommonSteps {
         return page::waitForElementPresent;
     }
 
+    @Step
     public void enter(String text) {
         log.info("Enter text" + text);
         googlePage.searchElement(text + Keys.ENTER);

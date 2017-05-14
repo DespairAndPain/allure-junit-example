@@ -1,5 +1,6 @@
 package my.company.steps;
 
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import my.company.pages.DuckDuckGoPage;
 import org.junit.Assert;
@@ -20,6 +21,7 @@ public class DuckDuckGoSteps extends CommonSteps {
     }
 
 
+    @Step
     public void enter(String text) {
         log.info("Enter text" + text);
         duckDuckGoPage.searchElement(text + Keys.ENTER);
@@ -28,6 +30,7 @@ public class DuckDuckGoSteps extends CommonSteps {
     }
 
     @Override
+    @Step
     public void open() {
         duckDuckGoPage.open();
     }

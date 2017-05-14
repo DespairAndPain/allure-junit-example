@@ -1,10 +1,10 @@
 package my.company.steps;
 
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import my.company.pages.YandexPage;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import ru.yandex.qatools.allure.annotations.Step;
 
 @Slf4j
 public class YandexSteps extends CommonSteps {
@@ -26,6 +26,7 @@ public class YandexSteps extends CommonSteps {
     }
 
     @Override
+    @Step
     public void open() {
         yandexPage.open();
     }

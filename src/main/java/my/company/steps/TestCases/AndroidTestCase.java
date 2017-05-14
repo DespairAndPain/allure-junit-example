@@ -3,9 +3,11 @@ package my.company.steps.TestCases;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -14,9 +16,9 @@ import java.net.URL;
  */
 public class AndroidTestCase {
 
-    protected final RemoteWebDriver driver = initWebDriver();
+    protected final AppiumDriver<WebElement> driver = initWebDriver();
 
-    protected RemoteWebDriver initWebDriver() {
+    protected AndroidDriver<WebElement> initWebDriver() {
         URL url;
         try {
             url = new URL("http://" + System.getProperty("selenium.url") + ":4444/wd/hub");
@@ -24,13 +26,13 @@ public class AndroidTestCase {
             throw new Error(e);
         }
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setCapability("version", "6.0.1");
+        desiredCapabilities.setCapability("version", "7.0.1");
         desiredCapabilities.setCapability("platform", "ANDROID");
-        desiredCapabilities.setCapability("deviceName", "nexus5");
+        desiredCapabilities.setCapability("deviceName", "PixelXL");
         desiredCapabilities.setCapability("clearSystemFiles", "true");
-        desiredCapabilities.setCapability("app", "C:\\Gismeteo+v1.1.9.apk");
+        desiredCapabilities.setCapability("app", new File("/Gismeteo+v1.1.10.apk").getAbsolutePath());
         System.out.println(url.toString());
-        return new AndroidDriver(url, desiredCapabilities);
+        return new AndroidDriver<>(url, desiredCapabilities);
     }
 
 }

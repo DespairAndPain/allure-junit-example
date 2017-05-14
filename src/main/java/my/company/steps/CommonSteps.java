@@ -1,11 +1,11 @@
 package my.company.steps;
 
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 import my.company.pages.AbstractPage;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import ru.yandex.qatools.allure.annotations.Attachment;
-import ru.yandex.qatools.allure.annotations.Step;
 
 public class CommonSteps {
 
@@ -23,7 +23,8 @@ public class CommonSteps {
     }
 
     @Step
-    public void open() {}
+    public void open() {
+    }
 
     @Attachment
     @Step("Make screen shot of results page")
