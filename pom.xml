@@ -20,7 +20,7 @@
     </scm>
 
     <properties>
-        <allure.version>2.0-BETA6</allure.version>
+        <allure.version>1.5.1</allure.version>
         <aspectj.version>1.8.9</aspectj.version>
         <compiler.version>1.7</compiler.version>
         <selenium.url>localhost</selenium.url>
@@ -31,6 +31,9 @@
         <junit.vintage.version>4.12.0-M4</junit.vintage.version>
         <junit.platform.version>1.0.0-M4</junit.platform.version>
         <browser.type>REMOTE_CHROME</browser.type>
+        <allure.results.directory>
+            ${project.build.directory}/allure-results
+        </allure.results.directory>
     </properties>
 
     <name>Allure JUnit Example</name>
@@ -53,8 +56,8 @@
             <version>${logback.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit4</artifactId>
+            <groupId>ru.yandex.qatools.allure</groupId>
+            <artifactId>allure-junit-adaptor</artifactId>
             <version>${allure.version}</version>
         </dependency>
         <dependency>
@@ -107,12 +110,6 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <systemProperties>
-                        <property>
-                            <name>allure.results.directory</name>
-                            <value>allure-results</value>
-                        </property>
-                    </systemProperties>
                     <systemPropertyVariables>
                         <selenium.url>${selenium.url}</selenium.url>
                         <browser.type>${browser.type}</browser.type>
@@ -125,11 +122,10 @@
                     <includes>
                         <include>**/*Suite.java</include>
                     </includes>
-
                     <properties>
                         <property>
                             <name>listener</name>
-                            <value>io.qameta.allure.junit4</value>
+                            <value>ru.yandex.qatools.allure.junit.AllureRunListener</value>
                         </property>
                     </properties>
                 </configuration>

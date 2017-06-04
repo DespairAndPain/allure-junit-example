@@ -30,7 +30,7 @@ public class AndroidTestCase {
         desiredCapabilities.setCapability("platform", "ANDROID");
         desiredCapabilities.setCapability("deviceName", "PixelXL");
         desiredCapabilities.setCapability("clearSystemFiles", "true");
-        desiredCapabilities.setCapability("app", new File("/Gismeteo+v1.1.10.apk").getAbsolutePath());
+        desiredCapabilities.setCapability("app", new File("src/test/resources/tochka.apk").getAbsolutePath());
         System.out.println(url.toString());
         return new AndroidDriver<>(url, desiredCapabilities);
     }

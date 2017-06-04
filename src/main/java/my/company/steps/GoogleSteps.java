@@ -1,12 +1,12 @@
 package my.company.steps;
 
-import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import my.company.pages.GooglePage;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.function.Function;
 

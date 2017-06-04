@@ -1,11 +1,11 @@
 package my.company.steps;
 
-import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import my.company.pages.DuckDuckGoPage;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import ru.yandex.qatools.allure.annotations.Step;
 
 /**
  * Created by stepan on 27.12.16.
