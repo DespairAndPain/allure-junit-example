@@ -20,8 +20,7 @@ public class DuckDuckGoSteps extends CommonSteps {
         this.duckDuckGoPage = new DuckDuckGoPage(driver);
     }
 
-
-    @Step
+    @Step("Ищем")
     public void enter(String text) {
         log.info("Enter text" + text);
         duckDuckGoPage.searchElement(text + Keys.ENTER);
@@ -29,8 +28,7 @@ public class DuckDuckGoSteps extends CommonSteps {
         Assert.assertTrue(page.waitForElementPresent(duckDuckGoPage.searchResult));
     }
 
-    @Override
-    @Step
+    @Step("Открываем страницу duckDuckGo.com")
     public void open() {
         duckDuckGoPage.open();
     }

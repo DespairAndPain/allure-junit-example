@@ -16,7 +16,7 @@ public class YandexSteps extends CommonSteps {
         yandexPage = new YandexPage(driver);
     }
 
-    @Step
+    @Step("Ищем")
     public void search(String text) {
         log.info("Enter text" + text);
         yandexPage.enterText(text);
@@ -25,8 +25,7 @@ public class YandexSteps extends CommonSteps {
         Assert.assertTrue(page.waitForElementPresent(yandexPage.resultFields));
     }
 
-    @Override
-    @Step
+    @Step("Открываем страницу yandex.ru")
     public void open() {
         yandexPage.open();
     }

@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.yandex.qatools.allure.annotations.Step;
+import ru.yandex.qatools.allure.annotations.Stories;
 
 import java.util.function.Function;
 
@@ -24,7 +25,7 @@ public class GoogleSteps extends CommonSteps {
         return page::waitForElementPresent;
     }
 
-    @Step
+    @Step("Ищем")
     public void enter(String text) {
         log.info("Enter text" + text);
         googlePage.searchElement(text + Keys.ENTER);
@@ -32,7 +33,7 @@ public class GoogleSteps extends CommonSteps {
         Assert.assertTrue(waitT().apply(googlePage.resultFields));
     }
 
-    @Override
+    @Step("Открываем страницу google.com")
     public void open() {
         googlePage.open();
     }

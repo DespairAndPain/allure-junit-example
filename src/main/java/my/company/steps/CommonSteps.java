@@ -22,10 +22,6 @@ public class CommonSteps {
         driver.get(url);
     }
 
-    @Step
-    public void open() {
-    }
-
     @Attachment
     @Step("Make screen shot of results page")
     public byte[] makeScreenShot() {

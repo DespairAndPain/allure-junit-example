@@ -1,11 +1,13 @@
 package my.company.tests;
 
-import my.company.steps.CommonSteps;
 import my.company.steps.DuckDuckGoSteps;
 import my.company.steps.TestCases.DefaultTestCase;
-import my.company.steps.TestCases.WebDriverConstructor;
 import org.junit.Test;
+import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.Stories;
 
+@Features("Поиск")
+@Stories("duckduckgo.com")
 public class SearchInDuckDuckGoTest extends DefaultTestCase {
 
     private DuckDuckGoSteps steps = new DuckDuckGoSteps(driver);
@@ -15,7 +17,6 @@ public class SearchInDuckDuckGoTest extends DefaultTestCase {
         steps.open();
         steps.enter("Not Allure Report");
         steps.makeScreenShot();
-        driver.quit();
     }
 
 }
